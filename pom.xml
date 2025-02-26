@@ -4,7 +4,7 @@
 
     <groupId>ca.ibodrov.concord</groupId>
     <artifactId>repository-browser-plugin</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>A plugin for concord-server to serve Concord repositories as static resources.</description>
@@ -199,7 +199,7 @@
         <url>${project.url}</url>
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.url}</developerConnection>
-        <tag>1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
