@@ -4,7 +4,7 @@ Serves Concord repositories as static resources.
 
 ## Usage
 
-Add the plugin's JAR to the concord-server's classpath and use the following endpoint:
+Add the plugin JAR to the concord-server classpath and use the following endpoint:
 
 ```
 GET /api/plugin/repositorybrowser/v1/{orgName}/{projectName}/{repositoryName}/{filePath:*}

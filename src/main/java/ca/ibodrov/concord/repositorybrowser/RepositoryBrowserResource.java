@@ -28,6 +28,8 @@ import static javax.ws.rs.core.Response.Status.*;
 @Path("/api/plugin/repositorybrowser/v1")
 public class RepositoryBrowserResource implements Resource {
 
+    private static final Duration DEFAULT_CACHE_EXPIRATION = Duration.ofHours(1);
+
     private final OrganizationDao organizationDao;
     private final ProjectDao projectDao;
     private final RepositoryDao repositoryDao;
@@ -45,7 +47,7 @@ public class RepositoryBrowserResource implements Resource {
         this.repositoryDao = requireNonNull(repositoryDao);
         this.repositoryManager = requireNonNull(repositoryManager);
         this.cache = CacheBuilder.newBuilder()
-                .expireAfterWrite(Duration.ofMinutes(5))
+                .expireAfterWrite(DEFAULT_CACHE_EXPIRATION)
                 .build(new CacheLoader<>() {
                     @Override
                     public CacheEntry load(CacheKey key) {
@@ -146,7 +148,7 @@ public class RepositoryBrowserResource implements Resource {
         if (extIdx < 2 || extIdx >= fileName.length() - 1) {
             return Optional.empty();
         }
-        var ext = fileName.substring(extIdx + 1);
+        var ext = fileName.substring(extIdx + 1).toLowerCase();
         return Optional.ofNullable(switch (ext) {
             case "css" -> "text/css";
             case "gif" -> "image/gif";
